@@ -1,20 +1,33 @@
 package dev.syconn.game;
 
-import dev.syconn.game.window.WindowManager;
-import org.lwjgl.Version;
+import dev.syconn.game.core.GameEngine;
+import dev.syconn.game.core.Window;
+import dev.syconn.game.test.TestGame;
+
+import static dev.syconn.game.util.Constants.TITLE;
 
 public class Launcher {
 
+    private static Window window;
+    private static TestGame game;
+
     public static void main(String[] args) {
-        System.out.println(Version.getVersion());
+        window = new Window(TITLE, 1600, 900, false);
+        game = new TestGame();
+        GameEngine engine = new GameEngine();
 
-        WindowManager window = new WindowManager("3D DEV", 1600, 900, false);
-        window.init();
-
-        while (!window.windowShouldClose()) {
-            window.update();
+        try {
+            engine.start();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+    }
 
-        window.cleanup();
+    public static Window getWindow() {
+        return window;
+    }
+
+    public static TestGame getGame() {
+        return game;
     }
 }

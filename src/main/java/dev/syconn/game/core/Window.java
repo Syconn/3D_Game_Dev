@@ -1,4 +1,4 @@
-package dev.syconn.game.window;
+package dev.syconn.game.core;
 
 import org.joml.Matrix4f;
 import org.lwjgl.glfw.GLFW;
@@ -8,7 +8,7 @@ import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.system.MemoryUtil;
 
-public class WindowManager {
+public class Window {
 
     public static final float FOV = (float) Math.toRadians(60);
     public static final float Z_NEAR = 0.01f;
@@ -20,7 +20,7 @@ public class WindowManager {
     private  boolean resize, vSync;
     private final Matrix4f projectionMatrix;
 
-    public WindowManager(String title, int width, int height, boolean vSync) {
+    public Window(String title, int width, int height, boolean vSync) {
         this.title = title;
         this.width = width;
         this.height = height;
